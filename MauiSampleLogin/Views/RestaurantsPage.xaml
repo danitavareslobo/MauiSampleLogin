@@ -25,7 +25,6 @@
                         <Grid 
                             RowDefinitions="auto,auto" 
                             RowSpacing="10"
-                            ColumnDefinitions="*,auto" 
                             Padding="20">
                             
                             <Label 
@@ -41,7 +40,6 @@
                             <aloha:Rating 
                                 HorizontalOptions="End" 
                                 Value="{Binding rating}" 
-                                Grid.ColumnSpan="2"
                                 WidthRequest="150"
                                 IsReadOnly="True"/>
 

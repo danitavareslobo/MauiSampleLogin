@@ -16,7 +16,7 @@ namespace MauiSampleLogin.ViewModels
         public async Task InitAsync()
         {
             var result = await _service
-                .GetAllAsync(await SecureStorage.GetAsync("token"));
+                .GetAllAsync(Preferences.Default.Get("token", string.Empty));
 
             if (result is null)
                 return;

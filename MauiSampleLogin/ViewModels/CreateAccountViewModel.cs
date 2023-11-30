@@ -4,6 +4,8 @@ using MauiSampleLogin.Contracts.CreateAccount;
 using MauiSampleLogin.Inferfaces;
 using MauiSampleLogin.Models.CreateAccount;
 
+using System.Text;
+
 namespace MauiSampleLogin.ViewModels
 {
     [ObservableObject]
@@ -40,7 +42,14 @@ namespace MauiSampleLogin.ViewModels
 
                 if (!validator.IsValid)
                 {
-                    await Toast.Make("Dados inválidos", CommunityToolkit.Maui.Core.ToastDuration.Long).Show();
+                    var messages = validator.Notifications.Select(x => x.Message);
+
+                    var sb = new StringBuilder();
+                    foreach (var message in messages)
+                        sb.Append($"{message}\n");
+
+                    await Shell.Current.DisplayAlert("Atenção",sb.ToString(), "OK");
+
                     return;
                 }
 

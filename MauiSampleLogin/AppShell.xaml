@@ -33,4 +33,15 @@
         </Tab>
     </FlyoutItem>
 
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout>
+            <BoxView HeightRequest="1" Color="#cecece"/>
+            <Button 
+                BackgroundColor="White"
+                Text="Logout"
+                TextColor="Black"
+                Clicked="Button_Clicked"/>
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+
 </Shell>
