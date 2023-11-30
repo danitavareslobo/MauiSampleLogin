@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiSampleLogin.Views.RestaurantsPage"
+             xmlns:vm="clr-namespace:MauiSampleLogin.ViewModels"
+             xmlns:aloha="clr-namespace:AlohaKit.Controls;assembly=AlohaKit"
+             xmlns:model="clr-namespace:MauiSampleLogin.Models.Restaurant"
+             Title="Restaurants"
+             x:DataType="vm:RestaurantsViewModel">
+
+    <CollectionView ItemsSource="{Binding Restaurants}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid RowDefinitions="200,auto" x:DataType="model:RestaurantResponse">
+                    <Image Source="{Binding image}" Aspect="AspectFill"/>
+                    <Border 
+                        Grid.Row="1" 
+                        Margin="0,-15,0,0" 
+                        BackgroundColor="White">
+                        
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,20,0,0"/>
+                        </Border.StrokeShape>
+
+                        <Grid 
+                            RowDefinitions="auto,auto" 
+                            RowSpacing="10"
+                            ColumnDefinitions="*,auto" 
+                            Padding="20">
+                            
+                            <Label 
+                                Text="{Binding name}" 
+                                FontSize="Large" 
+                                FontAttributes="Bold"/>
+
+                            <Label 
+                                Text="{Binding address}" 
+                                Grid.Row="1" 
+                                FontSize="Small"/>
+
+                            <aloha:Rating 
+                                HorizontalOptions="End" 
+                                Value="{Binding rating}" 
+                                Grid.ColumnSpan="2"
+                                WidthRequest="150"
+                                IsReadOnly="True"/>
+
+                        </Grid>
+                        
+                    </Border>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+    
+</ContentPage>

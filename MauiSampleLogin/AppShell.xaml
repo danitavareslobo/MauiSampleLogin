@@ -6,13 +6,25 @@
 	xmlns:views="clr-namespace:MauiSampleLogin.Views"
 	xmlns:local="clr-namespace:MauiSampleLogin"
     BackgroundColor="#FFCCEB">
+    
 	<ShellContent
-		Shell.NavBarIsVisible="False"
-		Title="Main"
-		ContentTemplate="{DataTemplate views:MainPage}"
-		Route="MainPage" />
+		Title="Login"
+        ContentTemplate="{DataTemplate views:MainPage}"
+        FlyoutItemIsVisible="False"
+        Route="MainPage"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.NavBarIsVisible="False"/>
 
-    <FlyoutItem>
+    <FlyoutItem Title="Restaurants">
+        <Tab>
+            <ShellContent 
+                Title="Restaurants" 
+                ContentTemplate="{DataTemplate views:RestaurantsPage}" 
+                Route="RestaurantsPage" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Products">
         <Tab>
             <ShellContent 
                 Title="Products" 
@@ -20,5 +32,5 @@
                 Route="ProductsPage" />
         </Tab>
     </FlyoutItem>
-    
+
 </Shell>
