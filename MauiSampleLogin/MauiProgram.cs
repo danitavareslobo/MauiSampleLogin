@@ -14,6 +14,12 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
+			.UseSentry(options =>
+			{
+				options.Dsn = "https://53c5be16f70fcd17f68a83f6b07075e4@o4506349886177280.ingest.sentry.io/4506349892927489";
+                options.Debug = true;
+                options.TracesSampleRate = 1.0;
+            })
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

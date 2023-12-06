@@ -5,6 +5,7 @@ using MauiSampleLogin.Models;
 using MauiSampleLogin.Models.CreateAccount;
 using MauiSampleLogin.Helper;
 using Newtonsoft.Json;
+using Sentry;
 
 namespace MauiSampleLogin.Services
 {
@@ -14,7 +15,7 @@ namespace MauiSampleLogin.Services
         {
             try 
             {
-                var response = await Constants.BASE_URL
+                var response = await Helper.Constants.BASE_URL
                 .AppendPathSegment("/users")
                 .PostJsonAsync(createAccountRequest);
 
@@ -32,8 +33,9 @@ namespace MauiSampleLogin.Services
         {
             try
             {
-                var response = await Constants.BASE_URL
+                var response = await Helper.Constants.BASE_URL
                     .AppendPathSegment("/auth")
+                    .WithTimeout(15)
                     .PostJsonAsync(loginRequest);
 
                 if(response.ResponseMessage.IsSuccessStatusCode) 
@@ -44,7 +46,7 @@ namespace MauiSampleLogin.Services
             }
             catch (FlurlHttpException ex) 
             {
-                Console.WriteLine(ex.Message) ;
+                SentrySdk.CaptureException(ex);
             }
             return new LoginResponse();
         }

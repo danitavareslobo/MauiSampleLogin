@@ -30,6 +30,8 @@ public partial class MainViewModel
     [RelayCommand]
     public async Task Login()
     {
+        throw new Exception("Erro ao tentar logar");
+
         if (Xamarin.Essentials.Connectivity.NetworkAccess == Xamarin.Essentials.NetworkAccess.Unknown ||
             Xamarin.Essentials.Connectivity.NetworkAccess == Xamarin.Essentials.NetworkAccess.None)
         {
