@@ -3,6 +3,8 @@
 using MauiSampleLogin.Contracts.Login;
 using MauiSampleLogin.Inferfaces;
 
+using Plugin.Fingerprint.Abstractions;
+
 using System.Text;
 
 namespace MauiSampleLogin.ViewModels;
@@ -11,15 +13,18 @@ namespace MauiSampleLogin.ViewModels;
 public partial class MainViewModel
 {
     private readonly ILoginService _loginService;
+    private readonly IFingerprint _fingerprint;
+
     [ObservableProperty]
     private string email;
 
     [ObservableProperty]
     private string password;
     
-    public MainViewModel(ILoginService loginService) 
+    public MainViewModel(ILoginService loginService, IFingerprint fingerprint) 
     {
         _loginService = loginService;
+        _fingerprint = fingerprint;
     }
 
     [RelayCommand]
@@ -69,5 +74,31 @@ public partial class MainViewModel
     public async Task CreateAccount()
     {
         await Shell.Current.GoToAsync(nameof(CreateAccountPage));
+    }
+
+    [RelayCommand]
+    public async Task ValidateBiometric()
+    {
+        var isValid = await _fingerprint.IsAvailableAsync();
+
+        if (!isValid)
+        {
+            await Shell.Current.DisplayAlert("Atenção!", "Dispositivo não contém sensor biométrica", "OK");
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(Preferences.Default.Get("token", string.Empty)))
+        {
+            var request = new AuthenticationRequestConfiguration("Validação biométrica", "Precisamos validar sua biometria para prosseguir");
+            var result = await _fingerprint.AuthenticateAsync(request);
+            if (result.Authenticated)
+            {
+                await Shell.Current.DisplayAlert("Autenticado!", "Acesso garantido", "OK");
+                await Shell.Current.GoToAsync($"//{nameof(RestaurantsPage)}");
+            }
+            else
+                await Shell.Current.DisplayAlert("Não autenticado", "Acesso negado", "OK");
+        }
+
     }
 }

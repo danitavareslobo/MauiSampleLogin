@@ -58,6 +58,13 @@
                 </Grid>
 
                 <Button 
+                    Text="Biometric" 
+                    Command="{Binding ValidateBiometricCommand}"
+                    FontSize="Medium"
+                    TextColor="#FF69B4"
+                    BackgroundColor="White"/>   
+
+                <Button 
                     Text="Create Account" 
                     Command="{Binding CreateAccountCommand}"
                     FontSize="Medium"
