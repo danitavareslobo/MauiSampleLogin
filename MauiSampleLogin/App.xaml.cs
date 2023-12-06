@@ -1,4 +1,6 @@
-﻿namespace MauiSampleLogin;
+﻿using MonkeyCache.LiteDB;
+
+namespace MauiSampleLogin;
 
 public partial class App : Application
 {
@@ -6,7 +8,9 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+        Barrel.ApplicationId = "mauilogin";
+
+        MainPage = new AppShell();
 	}
 
     protected override async void OnStart()
