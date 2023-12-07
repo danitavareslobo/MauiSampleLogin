@@ -3,6 +3,8 @@
 
 Esse projeto faz parte da playlist `Desenvolvendo meu primeiro app com .Net Maui` com vídeo aulas ministradas pelo [Kainã Almeida](https://github.com/kainaalmeida).
 
+<br>
+
 > O MauiSampleLogin é uma aplicação Android com Login,
 > Cadastro de Usuários, Configuração de API Fake 
 > e integração da tela de login.
@@ -56,7 +58,7 @@ dotnet build
 
 > Contate-me:
 <div>
-  <a href = "mailto:danitavares.dev@gmail.com"><img src="../MauiSampleLogin/MauiSampleLogin/Resources/Images/gmail.svg" target="_blank"></a>
-  <a href="https://www.linkedin.com/in/danitavareslobo" target="_blank"><img src="../MauiSampleLogin/MauiSampleLogin/Resources/Images/linkedin.svg" target="_blank"></a>  
-  <a href="https://wa.me/5547996356860" target="_blank"><img src="../MauiSampleLogin/MauiSampleLogin/Resources/Images/whatsapp.svg" target="_blank"></a>
+  <a href = "mailto:danitavares.dev@gmail.com"><img src="./assets/gmail.svg" target="_blank"></a>
+  <a href="https://www.linkedin.com/in/danitavareslobo" target="_blank"><img src="./assets/linkedin.svg" target="_blank"></a>  
+  <a href="https://wa.me/5547996356860" target="_blank"><img src="./assets/whatsapp.svg" target="_blank"></a>
 </div>
